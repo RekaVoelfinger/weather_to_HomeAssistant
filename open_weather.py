@@ -21,16 +21,19 @@ def write_to_file(file_name, response):
     with open(file_name, "w") as write_file:
         write_file.write(str(response))
 
-# TODO elaborate the result of will_it_rain function
-def will_it_rain(data_list, time_of_query): # call it in main with data_all_hours
+
+def will_it_rain(data_list, start_time, hours): # call it in main with data_all_hours, time_to_int(time_of_query)
     rainy_hours = {}
-    count = 0
-    for n in data_list:
-        if data_list[n]['pop'] != '0':
-            rainy_hours[str(int(time_of_query) + count)] = data_list[n]['pop']
+    print(f"start_time: {start_time}") # TODO why start_time = 1 ??? 
+    for h in range(hours):
+        print(f"h: {h} : pop: {data_list[h]['pop']}")
+        if data_list[h]['pop'] != 0:
+            rainy_hours[str(start_time + h)] = data_list[h]['pop']
     return rainy_hours
 
-
+# Convert time string from time_of_query to integer
+def time_to_int(time_str):
+    return int(time_str[:1])
 
 # Weidach coordinates (lat,lon): (48.45, 9.89)
 def main():
@@ -45,7 +48,8 @@ def main():
     print(f"time_of_query: {time_of_query}")
     print(f"Chance of rain: {100 * data_all_hours[1]['pop']}%")
     print(f"Temperature: {data_all_hours[1]['temp']}")
-    print(f"Time: {datetime.utcfromtimestamp(data_all_hours[1]['dt']).strftime('%H:%M')}")
+    print(f"Rainy hours: {will_it_rain(data_all_hours, time_to_int(time_of_query), 12)}")
+
 
 if __name__ == '__main__':
     main()
