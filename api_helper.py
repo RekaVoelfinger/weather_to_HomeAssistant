@@ -1,10 +1,11 @@
 import configparser
 import requests
 
-def get_api_key(service_name):
+# Get api_key or url
+def get_config(service_name, config_data):
     config = configparser.ConfigParser()
     config.read('config.ini')
-    return config[service_name]['api_key']
+    return config[service_name][config_data]
 
 # AccuWeather needs to get Location Key for given (latitude,longitude)
 # Weidach coordinates are (lat,lon): (48.45, 9.89)
