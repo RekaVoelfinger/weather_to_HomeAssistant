@@ -14,3 +14,13 @@ response_all_info = requests. get('http://api.openweathermap.org/data/2.5/onecal
 Eg.
 Response current weather in Weidach
 # response = requests. get('http://api.openweathermap.org/data/2.5/weather?lat=48.45&lon=9.89&units=metric&appid=6ec4e9ae0169e18bdf68974e631274cc')
+
+AccuWeather
+------------
+Location key for Weidach: 986294
+url=http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/986294?apikey=a2Ak2hMxpoLv0KbGapaQwC4rUSYlmu5N&details=true&metric=true
+
+WeatherBit
+------------
+
+Parameters see on: https://www.weatherbit.io/api/weather-forecast-120-hour
