@@ -79,8 +79,12 @@ def main():
     rainy_hours_acw = will_it_rain(forecast_acw, time_to_int(time_of_query_acw), 'RainProbability')
     logging.info(f"Rainy hours: {rainy_hours_acw}")
     logging.info("AccuWeather finished.")
-    '''
+
+    # TODO Error handling
+    ''' 
     # WeatherBit
+    # It does not work anymore "Your API key does not allow access to this endpoint."
+    
     logging.info("\nWeatherBit started...")
 
     logging.info("Getting config data...")
@@ -101,8 +105,11 @@ def main():
     logging.info(f"Rainy hours: {rainy_hours_wbit}")
     logging.info("WeatherBit finished.")
     '''
+
     #print(f"Rainy hours:\n{rainy_hours_ow}\n{rainy_hours_acw}\n{rainy_hours_wbit}")
-    chart.draw_chart(rainy_hours_ow, rainy_hours_acw)
+    chart.draw_chart(["blue", "orange", "green"], ["OpenWeatherMap", "AccuWeather", "WeatherBit"], rainy_hours_ow, rainy_hours_acw)
+    # TODO run this script in HomeAssistant
+    # TODO Copy file to 192.168.1.152/local
 
 if __name__ == '__main__':
     main()
